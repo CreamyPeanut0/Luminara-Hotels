@@ -11,7 +11,7 @@
     width: 100%;
     text-align: center;
     line-height: 3;
-    z-index: 1000;
+    z-index: 10;
 }
 
 .main {
@@ -30,7 +30,7 @@
     right:0px;
     margin: 20px;
     padding: 0;
-    z-index: 10;
+    z-index: 11;
     
 }
 
