@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Bevan:ital@0;1&family=Lavishly+Yours&display=swap');
+
+
 * {
     margin: 0;
     padding: 0;
@@ -6,70 +9,115 @@
 
 .header {
     position: fixed;
-    background-color: red;
+    background-color: #3E2723;
     height: 100px;
     width: 100%;
-    text-align: center;
-    line-height: 3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
     z-index: 10;
+    opacity: 0.8;
+    text-align: center;
+    
+}
+
+.knappar {
+    display: flex;
+    gap: 15px;
+}
+
+.knappar a {
+    text-decoration: none;
+    background: #D4AF37;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.knappar a:hover {
+    background: #B8860B;
+    color: black;
+}
+
+h1 {
+    font-size: 28px;
+    color: white;
+    text-align: center;
+    flex-grow: 1;
+    margin: 0;
+    font-family: "Lavishly Yours" ;
+    justify-content: start;
+    align-items: center;
+    text-align: left;
+    
 }
 
 .main {
     background-image: url('hotell.png');
-    height: 500px;
+    height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-}
-
-
-.knappar {
-    top:20px;
-    right:20px;
-    position:absolute;
-    right:0px;
-    margin: 20px;
-    padding: 0;
-    z-index: 11;
     
-}
-
-.knappar a {
-    display: flex;
-    text-decoration: none;
-    background: #F4E1C1;
-    color: #3C5A36;
-    padding: 10px 20px;
-    border-radius: 5px;
-    margin: 5px;
-    font-size: 18px;
-    font-weight: bold;
-    display: inline-block;
-    transition: 0.3s;
-    
-
-
-}
-
-.knappar a:hover {
-    background: #3C5A36;
-    color: #F4E1C1;
-}
-
-
-
-
-.main, .box2 {
-    display: block;
-    margin: 0;
-    padding: 0;
 }
 
 .box2 {
-    background-color: black;
+    background-color: #F5F5DC;
     color: white;
     height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
+
+.rum1 {
+background-color: black;
+height: 200px;
+width: 300px;
+
+}
+
+.rum2 {
+    background-color: orange;
+    height: 200px;
+    }
+
+.rum3 {
+        background-color: blue;
+        height: 200px;
+        }    
+
+
+
+        .main-content {
+            margin-top: 120px;
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .formulär input, .formulär select, .formulär textarea {
+            margin: 10px;
+            padding: 10px;
+            width: 250px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        
+        .formulär input[type="submit"] {
+            background-color: #D4AF37;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .formulär input[type="submit"]:hover {
+            background-color: #B8860B;
+        }
+        

@@ -8,22 +8,28 @@
 </head>
 <body>
 
-    <div class="header">
-        <h1>Luminara Hotels</h1>
+    <div class="header">  
+    <h1>Luminara Hotels</h1>  
+        <div class="knappar">
+            <a href="om.php">Om oss</a> 
+            <a href="loggain.php">Logga in</a>
+            <a href="Kontakta.php">Kontakta oss</a>
+            <a href="boka.php">Boka</a>
+               
+        </div>
         
     </div>
-
-    <div class="knappar">
-        <a href="Om.html">Om</a> 
-        <a href="Produkter.html">Produkter</a>    
-    </div>
-
+    
     <div class="main"></div>
 
-    
-
     <div class="box2">
-        <p>Välkommen till Luminara Hotels!</p>
+        
+    <div class="rum1">blo</div>
+
+    <div class="rum2">blä</div>
+
+    <div class="rum3">blå</div>
+
     </div>
 
 </body>
