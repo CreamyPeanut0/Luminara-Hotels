@@ -1,9 +1,9 @@
 <?php
 session_start();
-require 'db.php';
+
 
 if (!isset($_SESSION['användare'])) {
-    header("Location: loggain.php");
+    header("Location: boka.php");
     exit();
 }
 

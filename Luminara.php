@@ -12,7 +12,7 @@
     <h1>Luminara Hotels</h1>  
         <div class="knappar">
             <a href="om.php">Om oss</a> 
-            <a href="loggain.php">Logga in</a>
+            <a href="login.php">Logga in</a>
             <a href="Kontakta.php">Kontakta oss</a>
             <a href="boka.php">Boka</a>
                
