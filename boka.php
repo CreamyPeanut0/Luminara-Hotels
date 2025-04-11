@@ -1,9 +1,19 @@
 <?php
 session_start();
 
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db = "luminarareal";
 
-if (!isset($_SESSION['användare'])) {
-    header("Location: boka.php");
+$conn = mysqli_connect($host, $user, $pass, $db);
+
+if (!$conn) {
+    die("Kunde inte ansluta till databasen: " . mysqli_connect_error());
+}
+
+if (!isset($_SESSION['name'])) {
+    header("Location: login.php");
     exit();
 }
 
