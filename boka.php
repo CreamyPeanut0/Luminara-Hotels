@@ -49,6 +49,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
+
+
+<div class="header">  
+    <h1>Luminara Hotels</h1>  
+    <div class="knappar">
+        <a href="om.php">Om oss</a> 
+        <a href="login.php">Logga in</a>
+        <a href="kontakta.php">Kontakta oss</a>
+        <a href="boka.php">Boka</a>
+
+        <?php if (isset($_SESSION['5ddf']) && $_SESSION['5ddf'] == 10): ?>
+            <a href="admin.php">Admin</a>
+        <?php endif; ?>
+        <?php if (isset($_SESSION['name'])): ?>
+    <a href="logout.php">Logga ut (<?php echo $_SESSION['name']; ?>)</a>
+<?php endif; ?>
+    </div>
+</div>
+
+
+<div class="main-content">
 <form method="POST">
     <h2>Boka Rum</h2>
     <input type="text" name="namn" placeholder="Ditt namn" required><br>
@@ -60,3 +81,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </select><br>
     <input type="submit" value="Boka">
 </form>
+</div>

@@ -18,7 +18,7 @@ if (isset($_POST['btnLogin'])) {
         $_SESSION['5sp'] = $raden['id'];
         $_SESSION['5ddf'] = $raden['userlevel'];
         $_SESSION['name'] = $raden['username'];
-        header("Location: index.php");
+        header("Location: Luminara.php");
     } else {
         header("Location: login.php");
     }
@@ -34,15 +34,37 @@ if (isset($_POST['btnLogin'])) {
 </head>
 <body>
 
-<form action="login.php" method="post" style="text-align:center; margin-top: 100px;">
-    <label for="username">Användarnamn:</label><br>
-    <input type="text" name="username" required><br>
+<div class="header">  
+    <h1>Luminara Hotels</h1>  
+    <div class="knappar">
+        <a href="om.php">Om oss</a> 
+        <a href="Luminara.php">Hem</a>
+        <a href="kontakta.php">Kontakta oss</a>
+        <a href="boka.php">Boka</a>
 
-    <label for="password">Lösenord:</label><br>
-    <input type="password" name="password" required><br><br>
+        <?php if (isset($_SESSION['5ddf']) && $_SESSION['5ddf'] == 10): ?>
+            <a href="admin.php">Admin</a>
+        <?php endif; ?>
+        <?php if (isset($_SESSION['name'])): ?>
+    <a href="logout.php">Logga ut (<?php echo $_SESSION['name']; ?>)</a>
+<?php endif; ?>
+    </div>
+</div>
 
-    <button type="submit" name="btnLogin">Logga in</button>
-</form>
+
+
+
+<<div class="main-content">
+    <form action="login.php" method="post" class="formulär">
+        <label for="username">Användarnamn:</label><br>
+        <input type="text" name="username" required><br>
+
+        <label for="password">Lösenord:</label><br>
+        <input type="password" name="password" required><br><br>
+
+        <button type="submit" name="btnLogin">Logga in</button>
+    </form>
+</div>
 
 </body>
 </html>

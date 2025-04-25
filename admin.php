@@ -3,7 +3,7 @@ session_start();
 
 // Kolla om användaren är admin (userlevel 10)
 if (!isset($_SESSION['5ddf']) || $_SESSION['5ddf'] != 10) {
-    header("Location: index.php");
+    header("Location: Luminara.php");
     exit;
 }
 
@@ -32,7 +32,7 @@ $result = mysqli_query($conn, $query);
     <h2>Adminpanel – Bokningar</h2>
     
     <p style="text-align:center;">
-        <a href="index.php">Tillbaka till startsidan</a> | 
+        <a href="Luminara.php">Tillbaka till startsidan</a> | 
         <a href="logout.php">Logga ut</a>
     </p>
 

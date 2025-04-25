@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['5ddf']) || $_SESSION['5ddf'] != 10) {
-    header("Location: index.php");
+    header("Location: Luminara.php");
     exit;
 }
 
