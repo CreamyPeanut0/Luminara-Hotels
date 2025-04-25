@@ -1,44 +1,73 @@
 <?php
 session_start();
 
-// 🛡 Skydda adminpanelen
-if (!isset($_SESSION['5ddf']) || $_SESSION['5ddf'] != 1) {
-    header("Location: login.php");
-    exit();
+// Kolla om användaren är admin (userlevel 10)
+if (!isset($_SESSION['5ddf']) || $_SESSION['5ddf'] != 10) {
+    header("Location: index.php");
+    exit;
 }
 
-// 🧷 Databasanslutning
+// Databasanslutning
 $host = "localhost";
 $user = "root";
 $pass = "";
 $db = "luminarareal";
 $conn = mysqli_connect($host, $user, $pass, $db);
 
-// 🧹 Checka ut
-if (isset($_POST['checkout'])) {
-    $id = intval($_POST['id']);
-    mysqli_query($conn, "UPDATE bokningar SET utcheckad = 1 WHERE id = $id");
-    header("Location: admin.php");
-    exit();
-}
+// Hämta alla bokningar
+$query = "SELECT * FROM bokningar";
+$result = mysqli_query($conn, $query);
+?>
 
-// 🗑 Radera
-if (isset($_POST['delete'])) {
-    $id = intval($_POST['id']);
-    mysqli_query($conn, "DELETE FROM bokningar WHERE id = $id");
-    header("Location: admin.php");
-    exit();
-}
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <title>Adminpanel</title>
+    <link rel="stylesheet" href="main.css?v=<?php echo filemtime('main.css'); ?>">
+</head>
+<body>
 
-// ✏️ Redigera
-if (isset($_POST['update'])) {
-    $id = intval($_POST['id']);
-    $namn = $_POST['namn'];
-    $datum = $_POST['datum'];
-    $rum = $_POST['rum'];
-    mysqli_query($conn, "UPDATE bokningar SET namn='$namn', datum='$datum', rum='$rum' WHERE id = $id");
-    header("Location: admin.php");
-    exit();
-}
+<div class="main-content">
+    <h2>Adminpanel – Bokningar</h2>
+    
+    <p style="text-align:center;">
+        <a href="index.php">Tillbaka till startsidan</a> | 
+        <a href="logout.php">Logga ut</a>
+    </p>
 
-// 🔍 Filtr
+    <table border="1" cellpadding="10" style="margin: auto; background-color: #fff;">
+        <tr>
+            <th>ID</th>
+            <th>Namn</th>
+            <th>Datum</th>
+            <th>Rum</th>
+            <th>Ändra</th>
+            <th>Ta bort</th>
+        </tr>
+
+        <?php while ($row = mysqli_fetch_assoc($result)): ?>
+        <tr>
+            <!-- Formulär för att uppdatera -->
+            <form action="update_booking.php" method="post">
+                <td><?php echo $row['id']; ?>
+                    <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                </td>
+                <td><input type="text" name="namn" value="<?php echo $row['namn']; ?>"></td>
+                <td><input type="date" name="datum" value="<?php echo $row['datum']; ?>"></td>
+                <td><input type="text" name="rum" value="<?php echo $row['rum']; ?>"></td>
+                <td><input type="submit" value="Spara"></td>
+            </form>
+
+            <!-- Formulär för att ta bort -->
+            <form action="delete_booking.php" method="post" onsubmit="return confirm('Är du säker på att du vill ta bort bokningen?');">
+                <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                <td><input type="submit" value="Ta bort" style="background-color:red; color:white;"></td>
+            </form>
+        </tr>
+        <?php endwhile; ?>
+    </table>
+</div>
+
+</body>
+</html>

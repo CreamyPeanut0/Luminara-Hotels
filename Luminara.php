@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="sv">
 <head>
@@ -8,22 +12,26 @@
 </head>
 <body>
 
-    <div class="header">  
+<div class="header">  
     <h1>Luminara Hotels</h1>  
-        <div class="knappar">
-            <a href="om.php">Om oss</a> 
-            <a href="login.php">Logga in</a>
-            <a href="Kontakta.php">Kontakta oss</a>
-            <a href="boka.php">Boka</a>
-               
-        </div>
-        
-    </div>
-    
-    <div class="main"></div>
+    <div class="knappar">
+        <a href="om.php">Om oss</a> 
+        <a href="login.php">Logga in</a>
+        <a href="kontakta.php">Kontakta oss</a>
+        <a href="boka.php">Boka</a>
 
-    
-    <div class="sektion">
+        <?php if (isset($_SESSION['5ddf']) && $_SESSION['5ddf'] == 10): ?>
+            <a href="admin.php">Admin</a>
+        <?php endif; ?>
+        <?php if (isset($_SESSION['name'])): ?>
+    <a href="logout.php">Logga ut (<?php echo $_SESSION['name']; ?>)</a>
+<?php endif; ?>
+    </div>
+</div>
+
+<div class="main"></div>
+
+<div class="sektion">
     <h2>Våra rum</h2>
     <div class="rumrutor">
         <div class="rum">
@@ -40,10 +48,6 @@
         </div>
     </div>
 </div>
-
-
-
-
 
 </body>
 </html>
