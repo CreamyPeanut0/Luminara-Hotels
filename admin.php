@@ -1,20 +1,20 @@
 <?php
 session_start();
 
-// Kolla om användaren är admin (userlevel 10)
+
 if (!isset($_SESSION['5ddf']) || $_SESSION['5ddf'] != 10) {
     header("Location: Luminara.php");
     exit;
 }
 
-// Databasanslutning
+
 $host = "localhost";
 $user = "root";
 $pass = "";
 $db = "luminarareal";
 $conn = mysqli_connect($host, $user, $pass, $db);
 
-// Hämta alla bokningar
+
 $query = "SELECT * FROM bokningar";
 $result = mysqli_query($conn, $query);
 ?>
@@ -48,7 +48,7 @@ $result = mysqli_query($conn, $query);
 
         <?php while ($row = mysqli_fetch_assoc($result)): ?>
         <tr>
-            <!-- Formulär för att uppdatera -->
+            
             <form action="update_booking.php" method="post">
                 <td><?php echo $row['id']; ?>
                     <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
@@ -59,7 +59,7 @@ $result = mysqli_query($conn, $query);
                 <td><input type="submit" value="Spara"></td>
             </form>
 
-            <!-- Formulär för att ta bort -->
+            
             <form action="delete_booking.php" method="post" onsubmit="return confirm('Är du säker på att du vill ta bort bokningen?');">
                 <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
                 <td><input type="submit" value="Ta bort" style="background-color:red; color:white;"></td>

@@ -65,5 +65,12 @@ if (isset($_POST['btnLogin'])) {
     </form>
 </div>
 
+<footer>
+    <div class="box4">
+      <p>Kontakt: info@hotelluminara.se | Tel: 0123-456 789</p>
+      <p>&copy; 2025 Hotel Luminara</p>
+    </div>
+  </footer>
+
 </body>
 </html>

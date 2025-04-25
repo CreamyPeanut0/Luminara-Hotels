@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>grg</title>
+    <title>Boka rum</title>
     <link rel="stylesheet" href="main.css?v=<?php echo filemtime('main.css'); ?>">
 </head>
 <body>
@@ -37,5 +37,13 @@
             <input type="submit" value="Boka">
         </form>
     </div>
+
+    <footer>
+    <div class="box4">
+      <p>Kontakt: info@hotelluminara.se | Tel: 0123-456 789</p>
+      <p>&copy; 2025 Hotel Luminara</p>
+    </div>
+  </footer>
+
 </body>
 </html>
