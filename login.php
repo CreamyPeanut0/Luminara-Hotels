@@ -39,7 +39,6 @@ if (isset($_POST['btnLogin'])) {
     <div class="knappar">
         <a href="om.php">Om oss</a> 
         <a href="Luminara.php">Hem</a>
-        <a href="kontakta.php">Kontakta oss</a>
         <a href="boka.php">Boka</a>
 
         <?php if (isset($_SESSION['5ddf']) && $_SESSION['5ddf'] == 10): ?>

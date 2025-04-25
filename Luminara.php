@@ -17,7 +17,7 @@ session_start();
     <div class="knappar">
         <a href="om.php">Om oss</a> 
         <a href="login.php">Logga in</a>
-        <a href="kontakta.php">Kontakta oss</a>
+       
         <a href="boka.php">Boka</a>
 
         <?php if (isset($_SESSION['5ddf']) && $_SESSION['5ddf'] == 10): ?>
