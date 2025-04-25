@@ -65,32 +65,52 @@ h1 {
     
 }
 
-.box2 {
-    background-color: #F5F5DC;
-    color: white;
-    height: 500px;
+
+.sektion {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #F5F1E6 ;
+}
+
+.sektion h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+}
+
+.rumrutor {
     display: flex;
     justify-content: center;
-    align-items: center;
-    
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
-.rum1 {
-background-color: black;
-height: 200px;
-width: 300px;
-
+.rum {
+    width: 250px;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.rum2 {
-    background-color: orange;
+.rum img {
+    width: 100%;
     height: 200px;
-    }
+    object-fit: cover;
+}
 
-.rum3 {
-        background-color: blue;
-        height: 200px;
-        }    
+.info {
+    background-color: #E6D3C0; 
+    padding: 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+
+
+   
 
 
 
