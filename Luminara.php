@@ -20,6 +20,12 @@ session_start();
        
         <a href="boka.php">Boka</a>
 
+        
+        <?php if (isset($_SESSION['name'])): ?>
+    <a href="klagomal.php">Lämna klagomål</a>
+<?php endif; ?>
+
+
         <?php if (isset($_SESSION['5ddf']) && $_SESSION['5ddf'] == 10): ?>
             <a href="admin.php">Admin</a>
         <?php endif; ?>
