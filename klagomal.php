@@ -28,9 +28,10 @@ if (isset($_POST['submit'])) {
 <html lang="sv">
 <head>
     <meta charset="UTF-8">
-    <title>Lämna klagomål</title>
+    <title>Lämna klagomål - Luminara Hotels</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css?v=<?php echo filemtime('main.css'); ?>">
+    <link href="https://fonts.googleapis.com/css2?family=Bevan:ital@0;1&family=Lavishly+Yours&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -38,33 +39,30 @@ if (isset($_POST['submit'])) {
     <h1>Luminara Hotels</h1>
     <div class="knappar">
         <a href="om.php">Om oss</a>
-        <a href="login.php">Logga in</a>
         <a href="Luminara.php">Hem</a>
-
         <?php if (isset($_SESSION['5ddf']) && $_SESSION['5ddf'] == 10): ?>
             <a href="admin.php">Admin</a>
         <?php endif; ?>
-
         <?php if (isset($_SESSION['name'])): ?>
             <a href="logout.php">Logga ut (<?php echo $_SESSION['name']; ?>)</a>
         <?php endif; ?>
     </div>
 </div>
 
-<div class="main-content">
-    <h2>Lämna klagomål</h2>
+<div class="main" style="background-image: url('hotell.png'); height: 60vh; background-size: cover; background-position: center; margin-top: 100px;"></div>
+
+<section class="sektion">
+    <h2>Lämna ett klagomål</h2>
 
     <?php if (isset($message)): ?>
-        <p style="color: green; font-weight: bold;"><?php echo $message; ?></p>
+        <p style="color: green; font-weight: bold; margin-bottom: 20px;"><?php echo $message; ?></p>
     <?php endif; ?>
 
-    <form class="formulär" action="klagomal.php" method="post">
-        <textarea name="klagomal_text" rows="6" placeholder="Vänligen skriv ditt klagomål här" required></textarea><br>
-        <input type="submit" name="submit" value="Skicka">
+    <form class="formulär" action="klagomal.php" method="post" style="display: flex; flex-direction: column; align-items: center;">
+        <textarea name="klagomal_text" rows="6" placeholder="Vänligen skriv ditt klagomål här..." required style="margin-bottom: 20px;"></textarea>
+        <input type="submit" name="submit" value="Skicka" style="width: 200px;">
     </form>
-
-    <p><a href="Luminara.php">Tillbaka till startsidan</a></p>
-</div>
+</section>
 
 <footer>
     <div class="box4">
