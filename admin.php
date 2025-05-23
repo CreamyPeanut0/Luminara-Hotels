@@ -1,31 +1,36 @@
 <?php
+// Startar session för att hålla koll på inloggning
 session_start();
 
-if (!isset($_SESSION['5ddf']) || $_SESSION['5ddf'] != 10) {
+// Kollar om användaren är inloggad som administratör
+// Vi använder session-variabeln 'admin_status' för att kontrollera rättighet
+if (!isset($_SESSION['admin_status']) || $_SESSION['admin_status'] != 10) {
+    // Om man inte är admin, skickas man till inloggningssidan
     header("Location: login.php");
     exit;
 }
 
-
+// Anslut till databasen
 $host = "localhost";
 $user = "root";
 $pass = "";
 $db = "luminarareal";
 $conn = mysqli_connect($host, $user, $pass, $db);
 
+// Kontrollera om anslutningen lyckades
 if (!$conn) {
     die("Kunde inte ansluta till databasen: " . mysqli_connect_error());
 }
 
-
+// Om admin klickat på "ta bort bokning"
 if (isset($_GET['tabort_id'])) {
-    $id = intval($_GET['tabort_id']);
+    $id = intval($_GET['tabort_id']); // omvandla till heltal för säkerhet
     mysqli_query($conn, "DELETE FROM bokningar WHERE id = $id");
     header("Location: admin.php");
     exit;
 }
 
-
+// Om admin klickat på "ta bort klagomål"
 if (isset($_GET['tabort_klagomal_id'])) {
     $id = intval($_GET['tabort_klagomal_id']);
     mysqli_query($conn, "DELETE FROM klagomal WHERE id = $id");
@@ -33,7 +38,7 @@ if (isset($_GET['tabort_klagomal_id'])) {
     exit;
 }
 
-
+// Om admin klickat på "åtgärda klagomål"
 if (isset($_GET['atgarda_klagomal_id'])) {
     $id = intval($_GET['atgarda_klagomal_id']);
     mysqli_query($conn, "UPDATE klagomal SET status = 'Åtgärdat' WHERE id = $id");
@@ -41,10 +46,10 @@ if (isset($_GET['atgarda_klagomal_id'])) {
     exit;
 }
 
-
+// Hämta alla bokningar från databasen
 $bokningar = mysqli_query($conn, "SELECT * FROM bokningar");
 
-
+// Hämta alla klagomål från databasen
 $klagomal = mysqli_query($conn, "SELECT * FROM klagomal");
 ?>
 
@@ -115,7 +120,7 @@ $klagomal = mysqli_query($conn, "SELECT * FROM klagomal");
                 <td><?php echo htmlspecialchars($row['username']); ?></td>
                 <td><?php echo nl2br(htmlspecialchars($row['klagomal_text'])); ?></td>
                 <td><?php echo $row['datum']; ?></td>
-                
+                <td><?php echo htmlspecialchars($row['status']); ?></td>
                 <td><a href="admin.php?atgarda_klagomal_id=<?php echo $row['id']; ?>" style="color: #D4AF37; font-weight: bold; text-decoration: none;">Åtgärda</a></td>
                 <td><a href="admin.php?tabort_klagomal_id=<?php echo $row['id']; ?>" style="color: red; font-weight: bold; text-decoration: none;">Ta bort</a></td>
             </tr>
